@@ -1,0 +1,24 @@
+Server:
+  RunMode: debug
+  HttpPort: :8023
+  ReadTimeout: 5
+  WriteTimeOut: 23
+  MaxHeadBytes: 1 << 15
+App:
+  DefaultPageNo: 1
+  DefaultPageSize: 10
+  MaxPageSize: 100
+  LogSafePath: storage/logs
+  LogFileName: app
+  LogFileExt: .log
+DataBase:
+  DBType: mysql
+  UserName: spider
+  Password: dB&x(oNt1lR)
+  Host: 2c:59999
+  DBName: go
+  #  TablePrefix: blog_
+  Charset: utf8
+  ParseTime: true
+  MaxIdleCons: 10
+  MaxOpenCons: 23
