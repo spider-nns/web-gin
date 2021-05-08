@@ -25,4 +25,8 @@ func init() {
 	if err := global.ParseConfig(); err != nil {
 		log.Fatalf("parse config yaml err: %v", err)
 	}
+	err := global.InitDB()
+	if err != nil {
+		log.Fatalf("Init DB err:%v", err)
+	}
 }
