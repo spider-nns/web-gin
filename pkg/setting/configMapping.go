@@ -3,10 +3,10 @@ package setting
 import "time"
 
 type ServerSetting struct {
-	RunMode      string
-	HttpPort     string
-	ReadTimeOut  time.Duration
-	WriteTimeout time.Duration
+	RunMode        string
+	HttpPort       string
+	ReadTimeOut    time.Duration
+	WriteTimeout   time.Duration
 	MaxHeaderBytes int
 }
 
@@ -17,6 +17,9 @@ type AppSetting struct {
 	LogSavePath     string
 	LogFileName     string
 	LogFileExt      string
+	LogMaxSize      int
+	LogMaxTime      int
+	LogPrefix       string
 }
 type DataBaseSetting struct {
 	DBType   string

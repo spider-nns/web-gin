@@ -8,9 +8,12 @@ App:
   DefaultPageNo: 1
   DefaultPageSize: 10
   MaxPageSize: 100
-  LogSafePath: storage/logs
+  LogSavePath: storage/logs
   LogFileName: app
   LogFileExt: .log
+  LogMaxSize: 200
+  LogMaxTime: 15
+  LogPrefix:
 DataBase:
   DBType: mysql
   UserName: spider
