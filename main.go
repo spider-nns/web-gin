@@ -9,7 +9,6 @@ import (
 	"web-gin/global"
 	"web-gin/internal/model"
 	"web-gin/internal/routers"
-	"web-gin/pkg/errcode"
 	"web-gin/pkg/logger"
 	"web-gin/pkg/setting"
 )
@@ -81,9 +80,9 @@ func main() {
 		MaxHeaderBytes: global.ServerSetting.MaxHeaderBytes,
 	}
 	global.Log.InfoF("%s:web-gin/%s", "spider", "go")
-	e := errcode.NewError(200, "a")
-	//ee := errcode.NewError(200, "b")
-	global.Log.Info(e.Msg())
+	//e := err.NewError(200, "a")
+	//ee := err.NewError(200, "b")
+	//global.Log.Info(e.Msg())
 	//global.Log.Info(ee.Msg())
 	s.ListenAndServe()
 }

@@ -3,7 +3,7 @@ package app
 import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
-	"web-gin/global/enum"
+	"web-gin/pkg/err"
 )
 
 var (
@@ -42,10 +42,19 @@ func (r *Resp) AllResp(code int, msg string, data interface{}) {
 
 func (r *Resp) RespWithData(data interface{}) {
 	content := SOut{
-		enum.Success.Code(),
+		err.Success.Code(),
 		data,
 		DefaultSuccessMessage,
 	}
 	body, _ := json.Marshal(content)
 	r.Ctx.JSON(content.Code, body)
+}
+
+func (r *Resp) ErrResp(err *err.Resp) {
+	content := SOut{
+		Code:    err.Code(),
+		Message: err.Msg(),
+	}
+	body, _ := json.Marshal(content)
+	r.Ctx.JSON(err.Code(), string(body))
 }

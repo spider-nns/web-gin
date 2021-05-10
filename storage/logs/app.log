@@ -5,3 +5,11 @@
 2021/05/09 23:53:35 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 25 main.init.0"],"level":"panic","message":"捕获异常:{\"callers\":[\"/Users/spider/golangProjects/web-gin/main.go: 25 main.init.0\"],\"level\":\"panic\",\"message\":\"捕获异常:错误码 200 已经存在,请更换一个\",\"time\":1620575615410382000}","time":1620575615410437000}
 2021/05/09 23:57:07 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 25 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620575827664453000}
 2021/05/09 23:57:07 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 25 main.init.0"],"level":"panic","message":"捕获异常:错误码 200 已经存在,请更换一个","time":1620575827667011000}
+2021/05/10 12:53:37 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620622417772279000}
+2021/05/10 12:54:52 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620622492179660000}
+2021/05/10 15:53:04 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620633184045965000}
+2021/05/10 15:56:07 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620633367256810000}
+2021/05/10 15:58:11 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620633491471481000}
+2021/05/10 15:59:30 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620633570304371000}
+2021/05/10 16:08:10 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620634090750492000}
+2021/05/10 17:08:26 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620637706832288000}

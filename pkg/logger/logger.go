@@ -139,7 +139,6 @@ func (l *Logger) Output(level Level, message string) {
 		l.newLogger.Fatal(content)
 	case LevelPanic:
 		l.newLogger.Panic(content)
-
 	}
 }
 

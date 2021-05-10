@@ -1,0 +1,48 @@
+definitions:
+  app.SOut:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      message:
+        type: string
+    type: object
+  err.Resp:
+    properties:
+      code:
+        type: integer
+      details:
+        items:
+          type: string
+        type: array
+      msg:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Go 语言编程之旅:一起用Go写项目
+  license: {}
+  termsOfService: https://github.com/spider-nns/web-gin
+  title: web-gin
+  version: v1
+paths:
+  /api/v1/tags/{id}:
+    get:
+      parameters:
+      - description: 标签id
+        in: query
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/app.SOut'
+        "500":
+          description: 失败
+          schema:
+            $ref: '#/definitions/err.Resp'
+      summary: 查询多个标签
+swagger: "2.0"
