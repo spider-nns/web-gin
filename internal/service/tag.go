@@ -8,10 +8,20 @@ type CreateTagRequest struct {
 	State     uint8  `form:"state,default=1" binding:"oneof=0 1"`
 }
 type TagListRequest struct {
-	Name  string `form:"name" binding:"max=100"`
-	State uint8  `form:"state,default=1" binding:"oneof=0 1"`
-	PageNo int `form:"pageNo,default=1"`
-	PageSize int `form:"pageSize,default=10"`
+	Name     string `form:"name" binding:"max=100"`
+	State    uint8  `form:"state,default=1" binding:"oneof=0 1"`
+	PageNo   int    `form:"pageNo,default=1"`
+	PageSize int    `form:"pageSize,default=10"`
+}
+
+type UpdateTagRequest struct {
+	ID         uint32 `form:"name" binding:"required,get=1"`
+	Name       string `form:"name" binding:"max=100"`
+	State      uint8  `form:"state" binding:"oneof=0 1"`
+	ModifiedBy string `form:"modifiedBy" binding:"required,min=2.,ax=100"`
+}
+type DeleteTagRequest struct {
+	ID uint32 `form:"id" binding:"required,gte=1"`
 }
 
 func (ser *Service) CreateTag(param *CreateTagRequest) error {
@@ -23,5 +33,11 @@ func (ser *Service) CountTag(param *TagListRequest) (int, error) {
 }
 
 func (ser *Service) GetTagList(param *TagListRequest) ([]*model.Tag, error) {
-	return ser.dao.GetTagList(param.Name, param.State,param.PageNo,param.PageSize)
+	return ser.dao.GetTagList(param.Name, param.State, param.PageNo, param.PageSize)
+}
+func (ser *Service) UpdateTag(param *UpdateTagRequest) error {
+	return ser.dao.UpdateTag(param.ID, param.Name, param.State, param.ModifiedBy)
+}
+func (svc *Service) DeleteTag(param *DeleteTagRequest) error {
+	return svc.dao.DeleteTag(param.ID)
 }

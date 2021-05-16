@@ -8,7 +8,7 @@ definitions:
       message:
         type: string
     type: object
-  err.Resp:
+  errenum.Resp:
     properties:
       code:
         type: integer
@@ -71,7 +71,7 @@ paths:
         "500":
           description: 失败
           schema:
-            $ref: '#/definitions/err.Resp'
+            $ref: '#/definitions/errenum.Resp'
       summary: 创建标签
   /api/v1/tags/{id}:
     get:
@@ -91,6 +91,25 @@ paths:
         "500":
           description: 失败
           schema:
-            $ref: '#/definitions/err.Resp'
+            $ref: '#/definitions/errenum.Resp'
       summary: 查询标签
+    put:
+      parameters:
+      - description: 标签ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/app.SOut'
+        "500":
+          description: 失败
+          schema:
+            $ref: '#/definitions/errenum.Resp'
+      summary: 删除标签
 swagger: "2.0"

@@ -24,3 +24,20 @@ func (d *Dao) GetTagList(name string, state uint8, pageNo, pageSize int) ([]*mod
 	pageOffset := app.GetPageOffset(pageNo, pageSize)
 	return tag.List(d.engine, pageOffset, pageSize)
 }
+
+func (d *Dao) UpdateTag(id uint32, name string, state uint8, modifiedBy string) error {
+	tag := model.Tag{
+		Name:  name,
+		State: state,
+		Model: &model.Model{
+			ID:         id,
+			ModifiedBy: modifiedBy,
+		},
+	}
+	return tag.Update(d.engine)
+}
+
+func (d *Dao) DeleteTag(id uint32) error {
+	tag := model.Tag{Model: &model.Model{ID: id}}
+	return tag.Delete(d.engine)
+}

@@ -5,6 +5,7 @@ import (
 	"web-gin/global"
 	"web-gin/internal/service"
 	"web-gin/pkg/app"
+	"web-gin/pkg/convert"
 	"web-gin/pkg/errenum"
 )
 
@@ -83,16 +84,71 @@ func (t Tag) Create(c *gin.Context) {
 	ser := service.New(c.Request.Context())
 	err := ser.CreateTag(&param)
 	if err != nil {
-		global.Log.ErrorF("ser.CreateTag errenum: %v", err)
+		global.Log.ErrorF("ser.CreateTag err: %v", err)
 		resp.ErrResp(errenum.ErrorCreateTagFail)
 		return
 	}
 	resp.RespWithData(gin.H{})
 	return
 }
+
+// @Summary 更新标签
+// @Produce  json
+// @Param id path int true "标签ID"
+// @Param name body string false "标签名称" minlength(3) maxlength(100)
+// @Param state body int false "状态" Enums(0, 1) default(1)
+// @Param modified_by body string true "修改者" minlength(3) maxlength(100)
+// @Success 200 {object} app.SOut "成功"
+// @Failure 500 {object} errenum.Resp "失败"
+// @Router /api/v1/tags/{id} [put]
 func (t Tag) Update(c *gin.Context) {
-
+	param := service.UpdateTagRequest{
+		ID:         convert.StrTo(c.Param("id")).MustUint32(),
+		Name:       c.Param("name"),
+		ModifiedBy: c.Param("modifiedBy"),
+		State:      convert.StrTo(c.Param("state")).MustUint8(),
+	}
+	resp := app.NewResp(c)
+	valid, errors := app.BindAndValid(c, &param)
+	if !valid {
+		global.Log.ErrorF("app.BindAndValid errs: %v", errors)
+		resp.ErrResp(errenum.InvalidParams.WithDetails(errors.Errors()...))
+		return
+	}
+	ser := service.New(c.Request.Context())
+	err := ser.UpdateTag(&param)
+	if err != nil {
+		global.Log.ErrorF("ser.UpdateTag err: %v", err)
+		resp.ErrResp(errenum.ErrorUpdateTagFail)
+		return
+	}
+	resp.RespWithData(gin.H{})
+	return
 }
-func (t Tag) Delete(c *gin.Context) {
 
+// @Summary 删除标签
+// @Produce  json
+// @Param id path int true "标签ID"
+// @Success 200 {string} string "成功"
+// @Success 200 {object} app.SOut "成功"
+// @Failure 500 {object} errenum.Resp "失败"
+// @Router /api/v1/tags/{id} [put]
+func (t Tag) Delete(c *gin.Context) {
+	param := service.DeleteTagRequest{ID: convert.StrTo(c.Param("id")).MustUint32()}
+	response := app.NewResp(c)
+	valid, errors := app.BindAndValid(c, &param)
+	if !valid {
+		global.Log.ErrorF("app.BindAndValid errs: %v", errors)
+		response.ErrResp(errenum.InvalidParams.WithDetails(errors.Errors()...))
+		return
+	}
+	svc := service.New(c.Request.Context())
+	err := svc.DeleteTag(&param)
+	if err != nil {
+		global.Log.ErrorF("svc.DeleteTag err: %v", err)
+		response.ErrResp(errenum.ErrorDeleteTagFail)
+		return
+	}
+	response.RespWithData(gin.H{})
+	return
 }

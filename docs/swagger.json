@@ -76,7 +76,7 @@
                     "500": {
                         "description": "失败",
                         "schema": {
-                            "$ref": "#/definitions/err.Resp"
+                            "$ref": "#/definitions/errenum.Resp"
                         }
                     }
                 }
@@ -107,7 +107,36 @@
                     "500": {
                         "description": "失败",
                         "schema": {
-                            "$ref": "#/definitions/err.Resp"
+                            "$ref": "#/definitions/errenum.Resp"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "删除标签",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "标签ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.SOut"
+                        }
+                    },
+                    "500": {
+                        "description": "失败",
+                        "schema": {
+                            "$ref": "#/definitions/errenum.Resp"
                         }
                     }
                 }
@@ -129,7 +158,7 @@
                 }
             }
         },
-        "err.Resp": {
+        "errenum.Resp": {
             "type": "object",
             "properties": {
                 "code": {
