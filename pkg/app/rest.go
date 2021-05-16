@@ -3,7 +3,7 @@ package app
 import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
-	"web-gin/pkg/err"
+	"web-gin/pkg/errenum"
 )
 
 var (
@@ -25,9 +25,10 @@ type SOut struct {
 	Message string      `json:"message"`
 }
 type PageResp struct {
-	PageNo    int `json:"PageNo"`
-	PageSize  int `json:"pageSize"`
-	TotalRows int `json:"totalRows"`
+	PageNo    int         `json:"PageNo"`
+	PageSize  int         `json:"pageSize"`
+	TotalRows int         `json:"totalRows"`
+	Data      interface{} `json:"data"`
 }
 
 func (r *Resp) AllResp(code int, msg string, data interface{}) {
@@ -42,15 +43,25 @@ func (r *Resp) AllResp(code int, msg string, data interface{}) {
 
 func (r *Resp) RespWithData(data interface{}) {
 	content := SOut{
-		err.Success.Code(),
+		errenum.Success.Code(),
 		data,
 		DefaultSuccessMessage,
 	}
 	body, _ := json.Marshal(content)
-	r.Ctx.JSON(content.Code, body)
+	r.Ctx.JSON(content.Code, string(body))
 }
 
-func (r *Resp) ErrResp(err *err.Resp) {
+func (r *Resp) RespWithPageData(data PageResp) {
+	content := SOut{
+		errenum.Success.Code(),
+		data,
+		DefaultSuccessMessage,
+	}
+	body, _ := json.Marshal(content)
+	r.Ctx.JSON(content.Code, string(body))
+}
+
+func (r *Resp) ErrResp(err *errenum.Resp) {
 	content := SOut{
 		Code:    err.Code(),
 		Message: err.Msg(),

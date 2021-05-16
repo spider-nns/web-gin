@@ -5,6 +5,7 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	_ "web-gin/docs"
+	"web-gin/internal/middleware"
 	v1 "web-gin/internal/routers/api/v1"
 )
 
@@ -13,13 +14,13 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
+	r.Use(middleware.Translations())
 	article := v1.NewArticle()
 	tag := v1.NewTag()
 
 	apiV1 := r.Group("/api/v1")
 	{
-		apiV1.POST("/rags", tag.Create)
+		apiV1.POST("/tags", tag.Create)
 		apiV1.DELETE("/tags/:id", tag.Delete)
 		apiV1.PUT("/tags/:id", tag.Update)
 		apiV1.PATCH("/tags/:id/state", tag.Update)

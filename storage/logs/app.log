@@ -13,3 +13,9 @@
 2021/05/10 15:59:30 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620633570304371000}
 2021/05/10 16:08:10 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620634090750492000}
 2021/05/10 17:08:26 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1620637706832288000}
+2021/05/16 15:44:01 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1621151041606753000}
+2021/05/16 15:44:50 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1621151090212819000}
+2021/05/16 16:29:34 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1621153774171357000}
+2021/05/16 23:40:51 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1621179651775261000}
+2021/05/16 23:41:59 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1621179719150958000}
+2021/05/16 23:42:57 {"callers":["/Users/spider/golangProjects/web-gin/main.go: 24 main.init.0"],"level":"info","message":"spider:web-gin/go","time":1621179777376795000}

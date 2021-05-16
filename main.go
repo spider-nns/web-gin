@@ -15,15 +15,15 @@ import (
 
 func init() {
 	if err := parseConfig(); err != nil {
-		log.Fatalf("parse config yaml err: %v", err)
+		log.Fatalf("parse config yaml errenum: %v", err)
 	}
 	err := initDB()
 	if err != nil {
-		log.Fatalf("Init DB err:%v", err)
+		log.Fatalf("Init DB errenum:%v", err)
 	}
 	err = initLog()
 	if err != nil {
-		log.Fatalf("Init Log err: %v", err)
+		log.Fatalf("Init Log errenum: %v", err)
 	}
 }
 
@@ -80,8 +80,8 @@ func main() {
 		MaxHeaderBytes: global.ServerSetting.MaxHeaderBytes,
 	}
 	global.Log.InfoF("%s:web-gin/%s", "spider", "go")
-	//e := err.NewError(200, "a")
-	//ee := err.NewError(200, "b")
+	//e := errenum.NewError(200, "a")
+	//ee := errenum.NewError(200, "b")
 	//global.Log.Info(e.Msg())
 	//global.Log.Info(ee.Msg())
 	s.ListenAndServe()

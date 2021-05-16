@@ -9,9 +9,85 @@
         "version": "v1"
     },
     "paths": {
+        "/api/v1/tags": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查询标签列表",
+                "parameters": [
+                    {
+                        "description": "标签",
+                        "name": "name",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "状态",
+                        "name": "state",
+                        "in": "body",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "页，默认1",
+                        "name": "pageNo",
+                        "in": "body",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "页大小，默认10",
+                        "name": "pageSize",
+                        "in": "body",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/v1/tags/": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "创建标签",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "标签id",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.SOut"
+                        }
+                    },
+                    "500": {
+                        "description": "失败",
+                        "schema": {
+                            "$ref": "#/definitions/err.Resp"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/tags/{id}": {
             "get": {
-                "summary": "查询多个标签",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查询标签",
                 "parameters": [
                     {
                         "type": "integer",
