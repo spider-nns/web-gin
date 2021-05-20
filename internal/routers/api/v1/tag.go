@@ -15,7 +15,7 @@ func NewTag() Tag {
 	return Tag{}
 }
 
-// @summary 查询标签
+// Get @summary 查询标签
 // @Produce json
 // @Param id query int true "标签id"
 // @Success 200 {object} app.SOut "成功"
@@ -26,7 +26,7 @@ func (t Tag) Get(c *gin.Context) {
 	return
 }
 
-// @summary 查询标签列表
+// List @summary 查询标签列表
 // @produce json
 // @param name body string false "标签"
 // @param state body int false "状态"
@@ -66,7 +66,7 @@ func (t Tag) List(c *gin.Context) {
 	return
 }
 
-// @Summary 创建标签
+// Create @Summary 创建标签
 // @Produce json
 // @Param id query int true "标签id"
 // @Success 200 {object} app.SOut "成功"
@@ -92,7 +92,7 @@ func (t Tag) Create(c *gin.Context) {
 	return
 }
 
-// @Summary 更新标签
+// Update @Summary 更新标签
 // @Produce  json
 // @Param id path int true "标签ID"
 // @Param name body string false "标签名称" minlength(3) maxlength(100)
@@ -126,7 +126,7 @@ func (t Tag) Update(c *gin.Context) {
 	return
 }
 
-// @Summary 删除标签
+// Delete @Summary 删除标签
 // @Produce  json
 // @Param id path int true "标签ID"
 // @Success 200 {string} string "成功"

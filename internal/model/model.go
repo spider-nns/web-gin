@@ -11,12 +11,12 @@ import (
 
 type Model struct {
 	ID         uint32 `json:"id"`
-	CreatedBy  string `json:"created_by"`
-	ModifiedBy string `json:"modified_by"`
-	CreatedOn  uint32 `json:"created_on"`
-	ModifiedOn uint32 `json:"modified_on"`
-	DeletedOn  uint32 `json:"deleted_on"`
-	IsDel      uint8  `json:"is_del"`
+	CreatedBy  string `json:"createdBy"`
+	ModifiedBy string `json:"modifiedBy"`
+	CreatedOn  uint32 `json:"createdOn"`
+	ModifiedOn uint32 `json:"modifiedOn"`
+	DeletedOn  uint32 `json:"deletedOn"`
+	IsDel      uint8  `json:"isDel"`
 }
 
 func NewDBEngine(dbSetting *setting.DataBaseSetting) (*gorm.DB, error) {

@@ -45,10 +45,13 @@ func (t Tag) Count(db *gorm.DB) (int, error) {
 	return count, nil
 }
 
-func (t Tag) Update(db *gorm.DB) error{
-	return db.Model(&t).Where("id = ? AND is_del = ?",t.ID,0).Update(t).Error
+func (t Tag) Update(db *gorm.DB, values interface{}) error {
+	if err := db.Model(&t).Where("id = ? AND is_del = ?", t.ID, 0).Update(values).Error; err != nil {
+		return err
+	}
+	return nil
 }
 
 func (t Tag) Delete(db *gorm.DB) error {
-	return db.Where("id = ?",t.Model.ID).Delete(&t).Error
+	return db.Where("id = ?", t.Model.ID).Delete(&t).Error
 }

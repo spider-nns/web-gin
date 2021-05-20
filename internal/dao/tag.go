@@ -27,14 +27,14 @@ func (d *Dao) GetTagList(name string, state uint8, pageNo, pageSize int) ([]*mod
 
 func (d *Dao) UpdateTag(id uint32, name string, state uint8, modifiedBy string) error {
 	tag := model.Tag{
-		Name:  name,
-		State: state,
 		Model: &model.Model{
-			ID:         id,
-			ModifiedBy: modifiedBy,
-		},
+			ID: id,
+		}}
+	values := map[string]interface{}{
+		"state":       state,
+		"modified_by": modifiedBy,
 	}
-	return tag.Update(d.engine)
+	return tag.Update(d.engine, values)
 }
 
 func (d *Dao) DeleteTag(id uint32) error {

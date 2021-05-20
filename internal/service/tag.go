@@ -15,10 +15,10 @@ type TagListRequest struct {
 }
 
 type UpdateTagRequest struct {
-	ID         uint32 `form:"name" binding:"required,get=1"`
-	Name       string `form:"name" binding:"max=100"`
-	State      uint8  `form:"state" binding:"oneof=0 1"`
-	ModifiedBy string `form:"modifiedBy" binding:"required,min=2.,ax=100"`
+	ID         uint32 `json:"id"`
+	Name       string `json:"name" binding:"max=100"`
+	State      uint8  `json:"state" binding:"oneof=0 1"`
+	ModifiedBy string `json:"modifiedBy" binding:"required,min=2.,ax=100"`
 }
 type DeleteTagRequest struct {
 	ID uint32 `form:"id" binding:"required,gte=1"`
